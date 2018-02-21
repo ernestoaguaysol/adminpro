@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 // Modules
 import { PagesModule } from './pages/pages.module';
+
+// temporal
 import { FormsModule } from "@angular/forms";
 
 // ROUTES
@@ -12,8 +14,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 
-// sevicios temporal
-import { SettingsService } from './services/settings.service';
+// Servicios
+import { ServiceModule } from './services/service.module';
 
 
 @NgModule({
@@ -26,9 +28,10 @@ import { SettingsService } from './services/settings.service';
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
-  providers: [SettingsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
