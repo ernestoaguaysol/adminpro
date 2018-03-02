@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { PagesModule } from './pages/pages.module';
 
 // temporal
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // ROUTES
 import { APP_ROUTES } from './app.routes';
@@ -29,6 +29,7 @@ import { ServiceModule } from './services/service.module';
     APP_ROUTES,
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],
