@@ -15,6 +15,9 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { PAGES_ROUTES } from './pages.routes';
 
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
+
 // TEMPORAL
 import { IncrementadorComponent } from '../componnets/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../componnets/grafico-dona/grafico-dona.component';
@@ -43,7 +46,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     SharedModule,
     PAGES_ROUTES,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    PipesModule
   ]
 })
 export class PagesModule { }
