@@ -11,6 +11,9 @@ export class ProfileComponent implements OnInit {
 
   usuario: Usuario;
 
+  imagenSubir: File;
+  imagenTemp: string;
+
   constructor(
     public _usuarioService: UsuarioService
   ) {
@@ -30,6 +33,32 @@ export class ProfileComponent implements OnInit {
     
     this._usuarioService.actualizarUsuario(this.usuario )
           .subscribe();
+  }
+
+  seleccionImage( archivo: File ) {
+
+    if (!archivo) {
+      this.imagenSubir = null;
+      return;
+    }
+
+    if (archivo.type.indexOf('image') < 0) {
+      swal('Solo imagenes', 'El arcivo seleccionado no es una imagen', 'error');
+      this.imagenSubir = null;
+      return;
+    }
+
+    this.imagenSubir = archivo;
+    
+    let reader = new FileReader();
+    let urlImageTemp = reader.readAsDataURL(archivo);
+
+    reader.onloadend = () => this.imagenTemp = reader.result;
+
+  }
+
+  cambiarImagen() {
+    this._usuarioService.cambiarImagen( this.imagenSubir, this.usuario._id);
   }
 
 }

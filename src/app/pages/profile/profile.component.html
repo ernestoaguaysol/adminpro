@@ -38,19 +38,20 @@
   <div class="col-lg-5">
       
           <div class="card">
-              <div class="card-body">
+              <div class="card-body" align="center">
       
                   <h4 class="card-title">Fotografia del usuario</h4>
                   <h6 class="card-subtitle">nombre usuario</h6>
 
-                  <img src="" >
+                  <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150" >
+                  <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" >
 
-                  <input type="file">
+                  <input (change)="seleccionImage( $event.target.files[0] )" type="file">
 
                   <br>
                   <br>
 
-                  <button type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                  <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
                       <i class="fa fa-save"></i>
                       Actualizar foto
                   </button>
