@@ -18,11 +18,12 @@ import { PAGES_ROUTES } from './pages.routes';
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
 
-// TEMPORAL
+// 
 import { IncrementadorComponent } from '../componnets/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../componnets/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     GraficoDonaComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
   ],
   exports: [
     ProgressComponent,
