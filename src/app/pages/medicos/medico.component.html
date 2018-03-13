@@ -1,20 +1,23 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card card-body">
-            <h3 class="box-title m-b-0">Médico: NOMBRE</h3>
+            <h3 class="box-title m-b-0">Médico: {{ medico.nombre}}</h3>
 
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form ngNativeValidate (ngSubmit)="guardarMedico()">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMedico(f)">
                         <div class="form-group">
                             <label>Nombre del medico</label>
-                            <input class="form-control" type="text" placeholder="Nombre del Médico" required>
+                            <input [(ngModel)]="medico.nombre" name="nombre" class="form-control" type="text" placeholder="Nombre del Médico" required>
                         </div>
 
                         <div class="form-group">
                             <label>Hospital</label>
-                            <select name="" class="form-control" required>
+                            <select (change)="cambioHospital( $event.target.value )" [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
                               <option value="">Seleccione Hospital</option>
+                              <option *ngFor="let hospital of hospitales" [value]="hospital._id">
+                                {{ hospital.nombre }}
+                              </option>
                             </select>
                         </div>
                         
@@ -23,7 +26,9 @@
                           <i class="fa fa-save"></i>
                           Guardar
                         </button>
-                        <button routerLink="['/medicos']" class="btn btn-inverse waves-effect waves-light">Cancelar</button>
+                        <a routerLink="/medicos" class="btn btn-inverse waves-effect waves-light">
+                          Cancelar
+                        </a>
                     </form>
                 </div>
             </div>
@@ -35,18 +40,18 @@
 
           <h4 class="box-title m-b-0">Hospital</h4>
           
-          <img src="" alt="">
+          <img [src]="hospital.img | imagen:'hospital'" class="rounded img-fluid">
 
         </div>
       </div>
       
-      <div class="col-md-3">
+      <div class="col-md-3" *ngIf="medico._id">
           <div class="card card-body">
             
           
             <h4 class="box-title m-b-0">Fotografía</h4>
   
-            <img src="" alt="">
+            <img (click)="cambiarFoto()" [src]="medico.img | imagen:'medico'" class="rounded img-fluid pointer">
           
           </div>
 
