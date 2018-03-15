@@ -19,11 +19,7 @@ import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const pagesRoutes: Routes = [
-    { 
-        path: '', 
-        component: PagesComponent,
-        canActivate: [LoginGuardGuard],
-        children: [
+    
             { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'} },
             { path: 'progress', component: ProgressComponent , data: { titulo: 'ProgressBars'}},
             { path: 'graficas1', component: Graficas1Component , data: { titulo: 'Gráficas'}},
@@ -42,8 +38,7 @@ const pagesRoutes: Routes = [
             { path: 'medicos', component: MedicosComponent , data: { titulo: 'Mantenimiento de Medicos'}},
             { path: 'medico/:id', component: MedicoComponent , data: { titulo: 'Actualizar Medico'}},
             { path: '', pathMatch: 'full' , redirectTo: '/dashboard' },
-        ]
-    }
+
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
