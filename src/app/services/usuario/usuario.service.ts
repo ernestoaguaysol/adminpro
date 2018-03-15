@@ -4,6 +4,9 @@ import { HttpClient } from "@angular/common/http";
 import { URL_SERVICIOS } from '../../config/config';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
+
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
@@ -87,14 +90,17 @@ export class UsuarioService {
 
     return this.http.post(url, usuario)
                 .map( (resp: any) => {
-                  // localStorage.setItem('id', resp.id );
-                  // localStorage.setItem('token', resp.token );
-                  // localStorage.setItem('usuario', JSON.stringify(resp.usuario)  );
-
-
                   this.guardarStorage( resp.id, resp.token, resp.usuario, resp.menu);
 
                   return true;
+                })
+                .catch(err => {
+
+                  swal('Error en el login', err.error.mensaje, 'error');
+
+                  return Observable.throw(err);
+                  
+
                 });
   }
 
@@ -107,6 +113,14 @@ export class UsuarioService {
 
                   swal('Usuario creado', usuario.email, 'success');
                   return resp.usuario;
+                })
+                .catch(err => {
+
+                  swal(err.error.mensaje, err.error.errors.message, 'error');
+
+                  return Observable.throw(err);
+                  
+
                 });
   }
 
@@ -125,6 +139,14 @@ export class UsuarioService {
                 swal('Usuario actualizado', usuario.nombre, 'success');
 
                 return true;
+              })
+              .catch(err => {
+
+                swal(err.error.mensaje, err.error.errors.message, 'error');
+
+                return Observable.throw(err);
+                
+
               });
   }
 
