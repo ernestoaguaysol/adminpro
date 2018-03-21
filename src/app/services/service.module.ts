@@ -11,6 +11,7 @@ import {
   UsuarioService,
   LoginGuardGuard,
   AdminGuard,
+  VerificaTokenGuard,  
   SubirArchivoService,
   HospitalService,
   MedicoService
@@ -31,7 +32,8 @@ import {
     SubirArchivoService,
     ModalUploadService,
     HospitalService,
-    MedicoService
+    MedicoService,
+    VerificaTokenGuard
   ],
   declarations: []
 })
