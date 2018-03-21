@@ -3,9 +3,11 @@ import { Usuario } from '../../models/usuario';
 import { HttpClient } from "@angular/common/http";
 import { URL_SERVICIOS } from '../../config/config';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
 
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
